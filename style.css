@@ -53,12 +53,6 @@ body{
 .active:hover{
     background-color: var(--color-dark4);
 }
-.content{
-    text-align: center;
-    padding-top: 5em;
-    height: 100vh;
-    transition: 1s;
-}
 .btn_icon_header{
     background-color:transparent;
     border: none;
@@ -86,25 +80,32 @@ body{
     from{margin-left: -100vw;}
     top{margin-left: -10vw;}
 }
+.titulo{
+    margin: 30px;
+    position: relative;
+    text-align: center;
+    color: #414141;
+}
+.grid{
+    display: grid;
+    place-items: center;
+}
 .box{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.466);
     padding:15px;
     border-radius: 15px;
-    color: white;
 }
 fieldset{
+    padding: 10px;
     border: 3px solid var(--color-purple);
 }
 legend{
-    border: 1px solid var(--color-purple);
+    border: 3px solid var(--color-purple);
     padding: 10px;
     text-align: center;
-    background-color: var(--color-dark1);
+    background-color: rgba(70, 45, 104, 0.637);
     border-radius: 5px;
+    margin-bottom: 30px;
 }
 .inputBox{
     position: relative;
@@ -129,15 +130,15 @@ legend{
 .inputEntrada:focus ~ .labelInput,
 .inputEntrada:valid ~ .labelInput{
     top: -20px;
-    font-size: 16px;
-    color: dodgerblue;
+    font-size: 14px;
+    color: var(--color-purple);
 }
 .labelRadio, .inputRadio{
     cursor: pointer;
 }
 #submit{
-    background-image: linear-gradient(to right, rgb(7, 163, 224), rgb(26, 26, 151));
-    width: 50%;
+    background-color: #b040ff;
+    width: 100%;
     border: none;
     padding: 10px;
     color: white;
@@ -146,5 +147,5 @@ legend{
     border-radius: 10px;
 }
 #submit:hover{
-    background-image: linear-gradient(to right, rgb(6, 137, 189), rgb(17, 17, 94));
+    background-color: #7a2db1;
 }
