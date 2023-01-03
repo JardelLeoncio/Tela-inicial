@@ -82,7 +82,6 @@ body{
 }
 .titulo{
     margin: 30px;
-    position: relative;
     text-align: center;
     color: #414141;
 }
@@ -148,4 +147,13 @@ legend{
 }
 #submit:hover{
     background-color: #7a2db1;
+}
+
+@media only screen and (max-width: 500px ){
+    .box{
+        width: 70%;
+    }
+    .barra_titulo{     
+        font-size: 10px;
+    }
 }

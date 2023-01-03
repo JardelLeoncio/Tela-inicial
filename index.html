@@ -31,7 +31,7 @@
             <a href="#" class="active">Contato</a>
         </div>
     </div>
-    <div class="titulo">
+    <div class="titulo" tabindex="0" onclick="closeSidebar()">
         <h1>
             Calculo para Blend
         </h1>
@@ -70,27 +70,26 @@
                     <div>
                         <button id="submit" type="button" onclick="produto.calcular()">Calcular</button>
                     </div> 
-                </fieldset>                
+                </fieldset> 
+                <div>
+                    <table class="table">
+                        <thead class="barra_titulo">
+                            <tr>
+                                <th class="center">#</th>
+                                <th class="center">Híbrido</th>
+                                <th class="center">Silo</th>
+                                <th class="center">Volume</th>
+                                <th class="center">Fertilidade</th>
+                                <th class="center">Porcentagem</th> 
+                                
+                            </tr>
+                        </thead>
+                        <tbody id="tbody">
+                        
+                        </tbody>
+                    </table>
+                </div>          
             </form>
-            <br>
-            <div>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th class="center">#</th>
-                        <th class="center">Híbrido</th>
-                        <th class="center">Silo</th>
-                        <th class="center">Volume</th>
-                        <th class="center">Fertilidade</th>
-                        <th class="center">Porcentagem</th> 
-                        
-                    </tr>
-                    </thead>
-                    <tbody id="tbody">
-                        
-                    </tbody>
-                </table>
-            </div>
         </div>
     </div>
     
