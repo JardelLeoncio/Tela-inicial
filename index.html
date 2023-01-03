@@ -63,8 +63,10 @@
                     </div>
                     <br>
                     <div class="inputBox">
-                        <input type="text" name="porcentagem" id="porcentagem" class="inputEntrada" required>
-                        <label for="porcentagem" class="labelInput">Porcentagem</label>
+                        <p>Porcentagem:</p>
+                        <input type="radio"  name="porcentagem" value="70" checked required><label for="70">70%</label>
+                        <br>
+                        <input type="radio"  name="porcentagem" value="30" required><label for="30">30%</label>
                     </div>
                     <br>
                     <div>
@@ -80,7 +82,8 @@
                                 <th class="center">Silo</th>
                                 <th class="center">Volume</th>
                                 <th class="center">Fertilidade</th>
-                                <th class="center">Porcentagem</th> 
+                                <th class="center">%</th> 
+                                <th class="center">açoês</th>
                                 
                             </tr>
                         </thead>
@@ -144,6 +147,7 @@ class Produto{
             this.adicionar(produto);
         }
         this.listarTabela();
+        this.limpar();
     }
 
     listarTabela()
@@ -161,6 +165,8 @@ class Produto{
             let td_volume = tr.insertCell();
             let td_fertilidade = tr.insertCell();
             let td_porcentagem = tr.insertCell();
+            let td_acoes = tr.insertCell();
+            
 
             td_id.innerText = this.arrayProdutos[i].id;
             td_hibrido.innerText = this.arrayProdutos[i].hibrido;
@@ -168,6 +174,19 @@ class Produto{
             td_volume.innerText = this.arrayProdutos[i].volume;
             td_fertilidade.innerText = this.arrayProdutos[i].fertilidade;
             td_porcentagem.innerText = this.arrayProdutos[i].porcentagem;
+
+            td_id.classList.add('center');
+
+            let imgEdit = document.createElement('img');
+            imgEdit.src = 'imagens/edit.svg';
+            let imgDelete = document.createElement('img');
+            imgDelete.src = 'imagens/delete.svg';
+            imgDelete.setAttribute('onclick', "produto.deletar("+ this.arrayProdutos[i].id+")")
+
+            td_acoes.appendChild(imgEdit);
+            td_acoes.appendChild(imgDelete);
+
+            
         }
     }
 
@@ -180,13 +199,14 @@ class Produto{
     lerDados()
     {
         let produto = {}
-
+    
         produto.id = this.id;
         produto.hibrido = document.getElementById('hibrido').value;
         produto.silo = document.getElementById('silo').value;
         produto.volume = document.getElementById('volume').value;
         produto.fertilidade = document.getElementById('fertilidade').value;
-        produto.porcentagem = document.getElementById('porcentagem').value;
+        produto.porcentagem = document.querySelector("input[name='porcentagem']:checked").value;
+        
 
         return produto;
     }
@@ -210,16 +230,31 @@ class Produto{
         {
             msg += '-Informe o Fertilidade\n'
         }
-        if(produto.porcentagem == '')
-        {
-            msg += '-Informe o Porcentagem\n'
-        }
         if(msg != '')
         {
             alert(msg);
             return false;
         }
         return true;
+    }
+    limpar(){
+        document.getElementById('hibrido').value = '';
+        document.getElementById('silo').value = '';
+        document.getElementById('volume').value = '';
+        document.getElementById('fertilidade').value = '';
+        document.querySelector("input[name='porcentagem']:checked").value = ! checked;
+    }
+
+    deletar(id){
+
+        let tbody = document.getElementById('tbody');
+
+        for(let i = 0; i < this.arrayProdutos.length; i++){
+            if(this.arrayProdutos[i].id == id){
+                this.arrayProdutos.splice(i, 1);
+                tbody.deleteRow(i);
+            }
+        }
     }
 }
     var produto = new Produto();

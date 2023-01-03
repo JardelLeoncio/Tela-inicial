@@ -150,14 +150,12 @@ legend{
 }
 
 @media only screen and (max-width: 500px ){
-    .box{
-        width: 70%;
-    }
-    .barra_titulo{     
-        font-size: 10px;
-        color: #7a2db1;
-    }
     h1{
         color: white;
     }
+    .barra_titulo{
+        font-size: 9px;
+        color: #b040ff;
+    }
+
 }
