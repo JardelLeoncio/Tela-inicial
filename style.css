@@ -155,5 +155,9 @@ legend{
     }
     .barra_titulo{     
         font-size: 10px;
+        color: #7a2db1;
+    }
+    h1{
+        color: white;
     }
 }
