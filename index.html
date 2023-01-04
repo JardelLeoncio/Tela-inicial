@@ -80,8 +80,8 @@
                                 <th class="center">#</th>
                                 <th class="center">Híbrido</th>
                                 <th class="center">Silo</th>
-                                <th class="center">Volume</th>
-                                <th class="center">Fertilidade</th>
+                                <th class="center">Vol</th>
+                                <th class="center">Fert</th>
                                 <th class="center">%</th> 
                                 <th class="center">açoês</th>
                                 
@@ -182,9 +182,13 @@ class Produto{
             let imgDelete = document.createElement('img');
             imgDelete.src = 'imagens/delete.svg';
             imgDelete.setAttribute('onclick', "produto.deletar("+ this.arrayProdutos[i].id+")")
+            let espaço = document.createElement('espaço')
+            espaço.innerText = '-'
 
             td_acoes.appendChild(imgEdit);
+            td_acoes.appendChild(espaço);
             td_acoes.appendChild(imgDelete);
+            
 
             
         }
