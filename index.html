@@ -54,13 +54,13 @@
                     <br>
                     <div class="inputBox">
                         <p>Qual Correia Transportadora:</p>
-                        <input type="radio"  name="ct" value="15" checked required><label for="70">CT-37 (Debulha)</label>
+                        <input type="radio" class="inputRadio" id="ct-37" name="ct" value="15" checked required><label for="ct-37" class="labelRadio">CT-37 (Debulha)</label>
                         <br>
-                        <input type="radio"  name="ct" value="8" required><label for="30">CT-12 (Classificação)</label>
+                        <input type="radio" class="inputRadio" id="ct-12" name="ct" value="8" required><label for="ct-12" class="labelRadio">CT-12 (Classificação)</label>
                         <br>
-                        <input type="radio"  name="ct" value="8" required><label for="30">CT-10 (Tratamento)</label>
+                        <input type="radio" class="inputRadio" id="ct-10" name="ct" value="8" required><label for="ct-10" class="labelRadio">CT-10 (Tratamento)</label>
                         <br>
-                        <input type="radio"  name="ct" value="8" required><label for="30">CT-60 (Tratamento)</label>
+                        <input type="radio" class="inputRadio" id="ct-60" name="ct" value="8" required><label for="ct-60" class="labelRadio">CT-60 (Tratamento)</label>
                     </div>
                     <br>
                     <div>
@@ -215,6 +215,9 @@ class Produto{
         if(produto.Porcent_Esteril == '')
         {
             msg += '-Informe a Porcentagem\n'
+        }
+        if(produto.FluxoCT > produto.ct){
+            msg += '-Valor do Fluxo acima do permetido'
         }
         if(msg != '')
         {
