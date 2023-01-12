@@ -43,13 +43,13 @@
                     <legend><b>Blend</b></legend>
                     <br>
                     <div class="inputBox">
-                        <input type="text" name="hibrido" id="hibrido" class="inputEntrada" required>
-                        <label for="hibrido" class="labelInput">Determine o Fluxo da CT</label>
+                        <input type="text" name="FluxoCT" id="FluxoCT" class="inputEntrada" required>
+                        <label for="FluxoCT" class="labelInput">Determine o Fluxo da CT</label>
                     </div>
                     <br>
                     <div class="inputBox">
-                        <input type="text" name="silo" id="silo" class="inputEntrada" required>
-                        <label for="silo" class="labelInput">% do Fértil ou Estéril</label>
+                        <input type="text" name="Porcent_Esteril" id="Porcent_Esteril" class="inputEntrada" required>
+                        <label for="Porcent_Esteril" class="labelInput">% Do Estéril</label>
                     </div>
                     <br>
                     <div class="inputBox">
@@ -155,8 +155,8 @@ class Produto{
             let tr = tbody.insertRow();
 
             let td_id = tr.insertCell();
-            let td_hibrido = tr.insertCell();
-            let td_silo = tr.insertCell();
+            let td_FluxoCT = tr.insertCell();
+            let td_Porcent_Esteril = tr.insertCell();
             let td_result_esteril = tr.insertCell();
             let td_result_porcent = tr.insertCell();
             let td_result_fertil = tr.insertCell();
@@ -164,8 +164,8 @@ class Produto{
             
 
             td_id.innerText = this.arrayProdutos[i].id;
-            td_hibrido.innerText = this.arrayProdutos[i].hibrido;
-            td_silo.innerText = this.arrayProdutos[i].silo +"%";
+            td_FluxoCT.innerText = this.arrayProdutos[i].FluxoCT;
+            td_Porcent_Esteril.innerText = this.arrayProdutos[i].Porcent_Esteril +"%";
             td_result_esteril.innerText = this.arrayProdutos[i].result_esteril;
             td_result_porcent.innerText = this.arrayProdutos[i].result_porcent +"%";
             td_result_fertil.innerText = this.arrayProdutos[i].result_fertil;
@@ -194,11 +194,11 @@ class Produto{
         let produto = {}
     
         produto.id = this.id;
-        produto.hibrido = document.getElementById('hibrido').value;
-        produto.silo = document.getElementById('silo').value;
-        produto.result_esteril = Number(produto.silo) * Number(produto.hibrido) / 100;
-        produto.result_porcent = 100 - produto.silo;
-        produto.result_fertil = Number(produto.result_porcent) * Number(produto.hibrido) / 100;
+        produto.FluxoCT = document.getElementById('FluxoCT').value;
+        produto.Porcent_Esteril = document.getElementById('Porcent_Esteril').value;
+        produto.result_esteril = Number(produto.Porcent_Esteril) * Number(produto.FluxoCT) / 100;
+        produto.result_porcent = 100 - produto.Porcent_Esteril;
+        produto.result_fertil = Number(produto.result_porcent) * Number(produto.FluxoCT) / 100;
         produto.porcentagem = document.querySelector("input[name='porcentagem']:checked").value;
         
 
@@ -208,13 +208,13 @@ class Produto{
     validaCampos(produto)
     {   
         let msg = '';
-        if(produto.hibrido == '')
+        if(produto.FluxoCT == '')
         {
             msg += '-Informe o Híbrido\n'
         }
-        if(produto.silo == '')
+        if(produto.Porcent_Esteril == '')
         {
-            msg += '-Informe o Silo\n'
+            msg += '-Informe o Porcent_Esteril\n'
         }
         if(msg != '')
         {
@@ -224,8 +224,8 @@ class Produto{
         return true;
     }
     limpar(){
-        document.getElementById('hibrido').value = '';
-        document.getElementById('silo').value = '';
+        document.getElementById('FluxoCT').value = '';
+        document.getElementById('Porcent_Esteril').value = '';
         document.getElementById('volume').value = '';
         document.getElementById('fertilidade').value = '';
         document.querySelector("input[name='porcentagem']:checked").value = ! checked;
