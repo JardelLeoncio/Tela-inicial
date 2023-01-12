@@ -35,14 +35,17 @@ body{
     padding: 0 5%;
 }
 .nagivation_header{
-    gap: 3em;
-    z-index: 2;
+    gap: 2em;
+    z-index: 12;
 }
 .nagivation_header a{
     text-decoration: none;
     color: var(--color-purple);
     transition: 1s;
     font-weight: bold;
+    margin: 12px;
+    text-align: center;
+    
 }
 .active{
     background-color: var(--color-dark3);
@@ -69,7 +72,7 @@ body{
         top: 0;
         background-color: var(--color-dark5);
         height: 100%;
-        width: 35vw;
+        width: 47vw;
         padding: 1em;
         animation-duration: 1s;
         margin-left: -100vw;
