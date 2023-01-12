@@ -148,17 +148,24 @@ legend{
 #submit:hover{
     background-color: #7a2db1;
 }
-
+.barra_titulo{
+    color: #b040ff;
+    text-align: center;
+}
+#tbody{
+    color: #572574;
+    text-align: center;
+}
 @media only screen and (max-width: 500px ){
     h1{
         color: white;
     }
     .barra_titulo{
-        font-size: 9px;
         color: #b040ff;
+        text-align: center;
     }
     #tbody{
         color: #572574;
+        text-align: center;
     }
-
 }

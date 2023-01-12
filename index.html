@@ -54,13 +54,13 @@
                     <br>
                     <div class="inputBox">
                         <p>Qual Correia Transportadora:</p>
-                        <input type="radio"  name="porcentagem" value="15" checked required><label for="70">CT-37 (Debulha)</label>
+                        <input type="radio"  name="ct" value="15" checked required><label for="70">CT-37 (Debulha)</label>
                         <br>
-                        <input type="radio"  name="porcentagem" value="8" required><label for="30">CT-12 (Classificação)</label>
+                        <input type="radio"  name="ct" value="8" required><label for="30">CT-12 (Classificação)</label>
                         <br>
-                        <input type="radio"  name="porcentagem" value="8" required><label for="30">CT-10 (Tratamento)</label>
+                        <input type="radio"  name="ct" value="8" required><label for="30">CT-10 (Tratamento)</label>
                         <br>
-                        <input type="radio"  name="porcentagem" value="8" required><label for="30">CT-60 (Tratamento)</label>
+                        <input type="radio"  name="ct" value="8" required><label for="30">CT-60 (Tratamento)</label>
                     </div>
                     <br>
                     <div>
@@ -199,7 +199,7 @@ class Produto{
         produto.result_esteril = Number(produto.Porcent_Esteril) * Number(produto.FluxoCT) / 100;
         produto.result_porcent = 100 - produto.Porcent_Esteril;
         produto.result_fertil = Number(produto.result_porcent) * Number(produto.FluxoCT) / 100;
-        produto.porcentagem = document.querySelector("input[name='porcentagem']:checked").value;
+        produto.ct = document.querySelector("input[name='ct']:checked").value;
         
 
         return produto;
@@ -226,9 +226,6 @@ class Produto{
     limpar(){
         document.getElementById('FluxoCT').value = '';
         document.getElementById('Porcent_Esteril').value = '';
-        document.getElementById('volume').value = '';
-        document.getElementById('fertilidade').value = '';
-        document.querySelector("input[name='porcentagem']:checked").value = ! checked;
     }
 
     deletar(id){
