@@ -44,29 +44,23 @@
                     <br>
                     <div class="inputBox">
                         <input type="text" name="hibrido" id="hibrido" class="inputEntrada" required>
-                        <label for="hibrido" class="labelInput">Híbrido</label>
+                        <label for="hibrido" class="labelInput">Determine o Fluxo da CT</label>
                     </div>
                     <br>
                     <div class="inputBox">
                         <input type="text" name="silo" id="silo" class="inputEntrada" required>
-                        <label for="silo" class="labelInput">Silo</label>
+                        <label for="silo" class="labelInput">% do Fértil ou Estéril</label>
                     </div>
                     <br>
                     <div class="inputBox">
-                        <input type="text" name="volume" id="volume" class="inputEntrada" required>
-                        <label for="volume" class="labelInput">Volume</label>
-                    </div>
-                    <br>
-                    <div class="inputBox">
-                        <input type="text" name="fertilidade" id="fertilidade" class="inputEntrada" required>
-                        <label for="fertilidade" class="labelInput">Fertilidade</label>
-                    </div>
-                    <br>
-                    <div class="inputBox">
-                        <p>Porcentagem:</p>
-                        <input type="radio"  name="porcentagem" value="70" checked required><label for="70">70%</label>
+                        <p>Qual Correia Transportadora:</p>
+                        <input type="radio"  name="porcentagem" value="15" checked required><label for="70">CT-37 (Debulha)</label>
                         <br>
-                        <input type="radio"  name="porcentagem" value="30" required><label for="30">30%</label>
+                        <input type="radio"  name="porcentagem" value="8" required><label for="30">CT-12 (Classificação)</label>
+                        <br>
+                        <input type="radio"  name="porcentagem" value="8" required><label for="30">CT-10 (Tratamento)</label>
+                        <br>
+                        <input type="radio"  name="porcentagem" value="8" required><label for="30">CT-60 (Tratamento)</label>
                     </div>
                     <br>
                     <div>
@@ -78,11 +72,11 @@
                         <thead class="barra_titulo">
                             <tr>
                                 <th class="center">#</th>
-                                <th class="center">Híbrido</th>
-                                <th class="center">Silo</th>
-                                <th class="center">Vol</th>
-                                <th class="center">Fert</th>
-                                <th class="center">%</th> 
+                                <th class="center">Fluxo Geral</th>
+                                <th class="center">% Estéril</th>
+                                <th class="center">Kg/h</th>
+                                <th class="center">% Fértil</th>
+                                <th class="center">Kg/h</th> 
                                 <th class="center">açoês</th>
                                 
                             </tr>
@@ -98,7 +92,8 @@
     
 </body>
 <script>
-        var header = document.getElementById('header');
+    
+    var header = document.getElementById('header');
     var navigationHeader = document.getElementById('nagivation_header');
     var content = document.getElementById('content');
     var box = document.getElementById('box');
@@ -162,31 +157,25 @@ class Produto{
             let td_id = tr.insertCell();
             let td_hibrido = tr.insertCell();
             let td_silo = tr.insertCell();
-            let td_volume = tr.insertCell();
-            let td_fertilidade = tr.insertCell();
-            let td_porcentagem = tr.insertCell();
+            let td_result_esteril = tr.insertCell();
+            let td_result_porcent = tr.insertCell();
+            let td_result_fertil = tr.insertCell();
             let td_acoes = tr.insertCell();
             
 
             td_id.innerText = this.arrayProdutos[i].id;
             td_hibrido.innerText = this.arrayProdutos[i].hibrido;
-            td_silo.innerText = this.arrayProdutos[i].silo;
-            td_volume.innerText = this.arrayProdutos[i].volume;
-            td_fertilidade.innerText = this.arrayProdutos[i].fertilidade;
-            td_porcentagem.innerText = this.arrayProdutos[i].porcentagem;
+            td_silo.innerText = this.arrayProdutos[i].silo +"%";
+            td_result_esteril.innerText = this.arrayProdutos[i].result_esteril;
+            td_result_porcent.innerText = this.arrayProdutos[i].result_porcent +"%";
+            td_result_fertil.innerText = this.arrayProdutos[i].result_fertil;
 
             td_id.classList.add('center');
 
-            let imgEdit = document.createElement('img');
-            imgEdit.src = 'imagens/edit.svg';
             let imgDelete = document.createElement('img');
             imgDelete.src = 'imagens/delete.svg';
             imgDelete.setAttribute('onclick', "produto.deletar("+ this.arrayProdutos[i].id+")")
-            let espaço = document.createElement('espaço')
-            espaço.innerText = '-'
 
-            td_acoes.appendChild(imgEdit);
-            td_acoes.appendChild(espaço);
             td_acoes.appendChild(imgDelete);
             
 
@@ -207,8 +196,9 @@ class Produto{
         produto.id = this.id;
         produto.hibrido = document.getElementById('hibrido').value;
         produto.silo = document.getElementById('silo').value;
-        produto.volume = document.getElementById('volume').value;
-        produto.fertilidade = document.getElementById('fertilidade').value;
+        produto.result_esteril = Number(produto.silo) * Number(produto.hibrido) / 100;
+        produto.result_porcent = 100 - produto.silo;
+        produto.result_fertil = Number(produto.result_porcent) * Number(produto.hibrido) / 100;
         produto.porcentagem = document.querySelector("input[name='porcentagem']:checked").value;
         
 
@@ -225,14 +215,6 @@ class Produto{
         if(produto.silo == '')
         {
             msg += '-Informe o Silo\n'
-        }
-        if(produto.volume == '')
-        {
-            msg += '-Informe o Volume\n'
-        }
-        if(produto.fertilidade == '')
-        {
-            msg += '-Informe o Fertilidade\n'
         }
         if(msg != '')
         {
