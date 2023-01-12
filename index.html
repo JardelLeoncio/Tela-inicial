@@ -216,7 +216,7 @@ class Produto{
         {
             msg += '-Informe a Porcentagem\n'
         }
-        if(produto.FluxoCT > produto.ct){
+        if(Number(produto.FluxoCT) > Number(produto.ct)){
             msg += '-Valor do Fluxo acima do permetido'
         }
         if(msg != '')
