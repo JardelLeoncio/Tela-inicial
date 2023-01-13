@@ -170,14 +170,11 @@ legend{
     #tbody{
         color: #572574;
         text-align: center;
+        font: 14px Arial;
     }
     body{
         display: grid;
         height: 100vh;
         grid-template-rows: 10vh 15vh 10vh;
-    }
-    .grid{
-        display: grid;
-        place-items: center;
     }
 }
